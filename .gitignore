@@ -1,0 +1,6 @@
+bin
+pkg
+
+gin-bin
+vendor
+Gopkg.lock
