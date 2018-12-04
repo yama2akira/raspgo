@@ -24,7 +24,7 @@
       <pre id="chat"></pre>
     </center>
     <script>
-      var url = "ws://" + window.location.host + "/sampleapp/ws";
+      var url = "ws://" + window.location.host + "/chat/ws";
       var ws = new WebSocket(url);
       var name = "Guest-" + Math.floor(Math.random() * 1000);
       var chat = document.getElementById("chat");

@@ -6,12 +6,24 @@ import (
    // "gobot.io/x/gobot"
     "gobot.io/x/gobot/drivers/gpio"
     "gobot.io/x/gobot/platforms/raspi"
+    "os/exec"
+   // "fmt"
 )
 
 func handlePing(c *gin.Context) {
     c.JSON(http.StatusOK, gin.H{
-        "message": "ping",
+        "message": "pingです",
     })
+}
+
+func handleChime(c *gin.Context) {
+    //start_gin.sh のあるフォルダがカレント
+    err := exec.Command("sudo", "mpg321", "-a", "hw:1,0", "public/test.mp3").Start()
+    if(err == nil) {
+        c.String(http.StatusOK, "chime start!!")
+    } else {
+        c.String(http.StatusForbidden, "chime error!!")
+    }
 }
 
 // https://make.kosakalab.com/rpi/raspberry-pi_golang/
